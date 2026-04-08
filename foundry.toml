@@ -9,12 +9,14 @@ evm_version = "cancun"   # 使用 Cancun 版本的 EVM（最新版）
 optimizer = true         # 开启字节码优化器
 optimizer_runs = 200     # 优化运行次数（影响 gas 成本）
 via_ir = true            # 通过 IR（中间表示）编译，生成更优化的代码
+solc_version = "0.8.24"  # 指定版本
 fs_permissions = [
     { access = 'read-write', path = 'deployments/' },  # 部署记录可读写
     { access = 'read', path = 'deploy-config/' },      # 部署配置只读
     { access = 'read', path = 'broadcast/' },          # 广播日志只读
     { access = 'read', path = 'script/' },             # 脚本文件只读
 ]
+
 
 verbosity = 2       # 日志详细程度（0-4，越大越详细）
 ffi = false         # 禁用外部函数接口调用（安全性）
