@@ -52,9 +52,9 @@ contract DeployScript is Deployer {
         //        projectName = "bnb_test/";      // BSC 测试网
         //        projectName = "xlayer/";        // XLayer 主网
         //        projectName = "xlayer_test/";   // XLayer 测试网
-           projectName = "local/";               // 本地开发环境
+           //projectName = "local/";               // 本地开发环境
         //    projectName = "mova_test/";           // mova 测试网
-        //    projectName = "sepolia/";                // sepolia 测试网
+            projectName = "sepolia/";                // sepolia 测试网
 
         // ===== 选择部署环境 =====
         environment = "dev"; // 开发环境
