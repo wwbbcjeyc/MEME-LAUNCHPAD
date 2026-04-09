@@ -49,9 +49,12 @@ contract DeployScript is Deployer {
     function setUp() public override {
         // ===== 选择部署网络（取消注释对应行）=====
         //        projectName = "bnb/";           // BSC 主网
-        projectName = "bnb_test/"; // BSC 测试网
+        //        projectName = "bnb_test/";      // BSC 测试网
         //        projectName = "xlayer/";        // XLayer 主网
         //        projectName = "xlayer_test/";   // XLayer 测试网
+           projectName = "local/";               // 本地开发环境
+        //    projectName = "mova_test/";           // mova 测试网
+        //    projectName = "sepolia/";                // sepolia 测试网
 
         // ===== 选择部署环境 =====
         environment = "dev"; // 开发环境
@@ -106,12 +109,12 @@ contract DeployScript is Deployer {
         // ===== 部署操作（取消注释需要执行的操作）=====
         // 注意：部署 Helper 前需要先更新 initHash！
 
-        //        deployMEMEVesting();      // 部署归属合约
-        //        deployMEMECore();         // 部署核心合约
-        //        deployMEMEHelper();       // 部署辅助合约
-        //        deployMEMEFactory();      // 部署工厂合约
+                deployMEMEVesting();      // 部署归属合约
+                //deployMEMECore();         // 部署核心合约
+                //deployMEMEHelper();       // 部署辅助合约
+                //deployMEMEFactory();      // 部署工厂合约
 
-        setAll(); // 配置所有合约
+            //   setAll(); // 配置所有合约
 
         //        upgradeMEMECore();        // 升级核心合约
         //        upgradeMEMEVesting();     // 升级归属合约

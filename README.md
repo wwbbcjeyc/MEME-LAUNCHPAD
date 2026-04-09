@@ -13,6 +13,7 @@ https://book.getfoundry.sh/
 ### 编译合约
 
 ```shell
+forge clean
 forge build
 forge build --sizes
 
@@ -93,5 +94,90 @@ forge test --match-path test/FutureLaunchTest.t.sol # 延迟启动测试
 forge test --match-path test/CalculateInitialBuyTest.t.sol # 联合曲线计算测试
 forge test --match-path test/VestingPreBuyTest.t.sol # 预购+归属组合测试
 forge test --match-path test/VanityAddressTest.t.sol # 靓号地址测试
+```
+
+
+### 部署合约
+
+
+```shell
+
+# mova 测试网部署
+# 部署WBNB 和 PancakeRouter
+forge script script/DeployMock.s.sol:DeployMockScript \
+    --rpc-url $MOVAE_TEST_RPC \
+    --broadcast \
+    --legacy \
+    --slow
+
+# 清理所有之前的部署记录
+rm -rf deployments/ broadcast/
+source .env
+forge script script/Deploy.s.sol:DeployScript \
+    --rpc-url $MOVAE_TEST_RPC \
+    --broadcast \
+    --legacy
+    --slow
+
+
+
+
+# SEPOLIA 部署
+# 部署WBNB 和 PancakeRouter
+forge script script/DeployMock.s.sol:DeployMockScript \
+    --rpc-url $SEPOLIA_RPC \
+    --broadcast \
+    --slow
+
+# 清理所有之前的部署记录
+rm -rf deployments/ broadcast/
+forge script script/Deploy.s.sol:DeployScript \
+  --rpc-url $SEPOLIA_RPC \
+  --broadcast \
+  --legacy \
+  --slow
+
+
+
+
+### 部署主合约
+# BSC 测试网部署
+forge script script/Deploy.s.sol:DeployScript \
+    --rpc-url $BSC_TEST_RPC \
+    --broadcast \
+    --verify \
+    --etherscan-api-key $PRIVATE_KEY \
+    --verifier etherscan \
+    --legacy \
+    --slow
+
+
+
+# local 部署
+# 清理所有之前的部署记录
+
+rm -rf deployments/ broadcast/
+
+# 部署WBNB 和 PancakeRouter --辅助合约
+forge script script/DeployMock.s.sol:DeployMockScript \
+    --rpc-url $LOCAL_RPC \
+    --broadcast \
+    --legacy \
+    --slow
+
+# 部署主合约
+forge script script/Deploy.s.sol:DeployScript \
+  --rpc-url $LOCAL_RPC \
+  --broadcast \
+  --legacy \
+  --slow
+
+forge script script/Deploy.s.sol:DeployScript \
+  --rpc-url $LOCAL_RPC \
+  --broadcast \
+  --sig "setAll()" \
+  --legacy \
+  --slow
+
 ```
 
