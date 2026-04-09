@@ -19,6 +19,8 @@ https://book.getfoundry.sh/
 
 ```shell
 forge build
+forge build --sizes
+
 ```
 
 ### Test
@@ -86,26 +88,15 @@ $ cast --help
 ```shell
 # 快速测试
 make test
-
-# 详细输出
-make test-v
-
-# 显示测试摘要
-make test-summary
-
-# 显示 Gas 消耗报告
-make test-gas
+# 分模块测试
+forge test --match-path test/MetaNodeCoreTest.t.sol # 核心合约测试（权限、保证金、交易限制）
+forge test --match-path test/InitialBuyTest.t.sol # 初始买入测试
+forge test --match-path test/VestingTest.t.sol # 归属功能测试（锁仓释放）
+forge test --match-path test/ComprehensiveFeeTest.t.sol # 费用机制测试
+forge test --match-path test/MarginDepositTest.t.sol # 保证金测试
+forge test --match-path test/FutureLaunchTest.t.sol # 延迟启动测试
+forge test --match-path test/CalculateInitialBuyTest.t.sol # 联合曲线计算测试
+forge test --match-path test/VestingPreBuyTest.t.sol # 预购+归属组合测试
+forge test --match-path test/VanityAddressTest.t.sol # 靓号地址测试
 ```
 
-### 分模块测试 
-```shell
-make test-core           # 核心合约测试（权限、保证金、交易限制）
-make test-initial-buy    # 初始买入测试
-make test-vesting        # 归属功能测试（锁仓释放）
-make test-fee            # 费用机制测试
-make test-margin         # 保证金测试
-make test-future-launch  # 延迟启动测试
-make test-calculate      # 联合曲线计算测试
-make test-vesting-prebuy # 预购+归属组合测试
-make test-vanity         # 靓号地址测试
-```
