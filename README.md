@@ -83,7 +83,7 @@ cast --help
 ### 本地测试 
 ```shell
 # 快速测试
-make test
+forge test
 # 分模块测试
 forge test --match-path test/MetaNodeCoreTest.t.sol # 核心合约测试（权限、保证金、交易限制）
 forge test --match-path test/InitialBuyTest.t.sol # 初始买入测试
@@ -94,8 +94,24 @@ forge test --match-path test/FutureLaunchTest.t.sol # 延迟启动测试
 forge test --match-path test/CalculateInitialBuyTest.t.sol # 联合曲线计算测试
 forge test --match-path test/VestingPreBuyTest.t.sol # 预购+归属组合测试
 forge test --match-path test/VanityAddressTest.t.sol # 靓号地址测试
+
+forge test --match-contract VestingTest -vvv
+
 ```
 
+```shell
+# 基本用法
+forge test --gas-report
+
+# 查看特定测试的 Gas
+forge test --match-test testFunctionName --gas-report
+
+# 查看特定合约的测试 Gas
+forge test --match-contract ContractName --gas-report
+
+# 详细输出
+forge test -vvv --gas-report
+```
 
 ### 部署合约
 

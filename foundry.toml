@@ -47,4 +47,3 @@ localhost = "${LOCAL_RPC}"
 [etherscan]
 sepolia = { key = "${ETHERSCAN_API_KEY}" }
 mainnet = { key = "${ETHERSCAN_API_KEY}" }
-
