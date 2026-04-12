@@ -111,6 +111,19 @@ forge test --match-contract ContractName --gas-report
 
 # 详细输出
 forge test -vvv --gas-report
+
+# 生成覆盖率报告
+forge coverage
+
+# 输出详细报告
+forge coverage --report lcov
+
+# 只测试特定合约
+forge coverage --match-contract MyContract
+
+# 排除某些合约
+forge coverage --match-contract "^(?!Test).*"
+
 ```
 
 ### 部署合约
